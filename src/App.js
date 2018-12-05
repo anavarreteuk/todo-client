@@ -22,7 +22,7 @@ class App extends Component {
   //Get All Users And Filter By Active User 
   componentDidMount() {
     this.interval = setInterval(() => {
-    fetch(`https://radiant-forest-10458.herokuapp.com/api/v1/users`)
+      fetch(`http://localhost:3000/api/v1/users`)
       .then(resp => resp.json())
       .then(data => {
         data.map(user => user.selected = false)
@@ -31,7 +31,7 @@ class App extends Component {
         this.setState({ activeUsers: activeUsers })
       }
     )     
-      fetch(`https://radiant-forest-10458.herokuapp.com/api/v1/tasks`)
+      fetch(`http://localhost:3000/api/v1/tasks`)
       .then(resp => resp.json())
       .then(data => {
         data.map(task => task.selected = false)
@@ -121,7 +121,7 @@ class App extends Component {
   }
 
   postNewTaskToServerAndPage = () => {
-    fetch(`https://radiant-forest-10458.herokuapp.com/api/v1/tasks`, {
+    fetch(`http://localhost:3000/api/v1/tasks`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -141,7 +141,7 @@ class App extends Component {
 
 
   deactivateTask = (task) => {
-    fetch(`https://radiant-forest-10458.herokuapp.com/api/v1/tasks/${task.id}`, {
+    fetch(`http://localhost:3000/api/v1/tasks/${task.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
